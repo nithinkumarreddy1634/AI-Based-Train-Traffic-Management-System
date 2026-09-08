@@ -39,6 +39,11 @@ async def get_comprehensive_health() -> Dict[str, Any]:
     """Granular health check reporting status of all major subsystems."""
     db_ok = check_database_connection()
     sim_ok = simulation_engine.is_ready
+    if not delay_prediction_service.is_ready:
+        try:
+            delay_prediction_service.load_artifacts()
+        except Exception:
+            pass
     ml_ok = delay_prediction_service.is_ready
     meta = delay_prediction_service.get_metadata() if ml_ok else {}
 

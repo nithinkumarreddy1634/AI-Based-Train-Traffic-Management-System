@@ -1,10 +1,13 @@
 import sys
 from pathlib import Path
 
-# Add project root directory to sys.path so simulation module can be imported
+# Add project root and backend directory to sys.path
 root_dir = Path(__file__).resolve().parent.parent.parent
+backend_dir = Path(__file__).resolve().parent.parent
 if str(root_dir) not in sys.path:
     sys.path.insert(0, str(root_dir))
+if str(backend_dir) not in sys.path:
+    sys.path.insert(0, str(backend_dir))
 
 from contextlib import asynccontextmanager
 from fastapi import FastAPI, Request, HTTPException
