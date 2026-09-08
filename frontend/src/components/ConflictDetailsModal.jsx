@@ -1,0 +1,132 @@
+import React from 'react';
+
+export default function ConflictDetailsModal({ conflict, onClose }) {
+  if (!conflict) return null;
+
+  const getSeverityClass = (sev) => {
+    switch (sev) {
+      case 'CRITICAL': return 'badge-critical';
+      case 'HIGH': return 'badge-high';
+      case 'MEDIUM': return 'badge-medium';
+      case 'LOW': return 'badge-low';
+      default: return 'badge-info';
+    }
+  };
+
+  const getUrgencyClass = (urg) => {
+    switch (urg) {
+      case 'IMMEDIATE': return 'urgency-immediate';
+      case 'SOON': return 'urgency-soon';
+      default: return 'urgency-monitor';
+    }
+  };
+
+  const ttcDisplay = conflict.time_to_conflict_seconds !== null && conflict.time_to_conflict_seconds !== undefined
+    ? `${conflict.time_to_conflict_seconds}s (${(conflict.time_to_conflict_seconds / 60).toFixed(1)} min)`
+    : 'Stationary / Indeterminate';
+
+  return (
+    <div className="modal-overlay" onClick={onClose}>
+      <div className="modal-content conflict-modal" onClick={(e) => e.stopPropagation()}>
+        <div className="modal-header">
+          <div>
+            <div className="modal-subtitle">CONFLICT INVESTIGATION DOSSIER</div>
+            <h2 className="modal-title">
+              {conflict.conflict_id}: {conflict.conflict_type.replace('_', ' ')}
+            </h2>
+          </div>
+          <button className="modal-close-btn" onClick={onClose} title="Close">×</button>
+        </div>
+
+        <div className="modal-body">
+          {/* Top Status & Urgency Banner */}
+          <div className="conflict-kpi-banner">
+            <div className="conflict-kpi-item">
+              <span className="kpi-label">SEVERITY</span>
+              <span className={`badge ${getSeverityClass(conflict.severity)}`}>
+                {conflict.severity}
+              </span>
+            </div>
+            <div className="conflict-kpi-item">
+              <span className="kpi-label">URGENCY</span>
+              <span className={`urgency-pill ${getUrgencyClass(conflict.urgency)}`}>
+                {conflict.urgency}
+              </span>
+            </div>
+            <div className="conflict-kpi-item">
+              <span className="kpi-label">SEPARATION GAP</span>
+              <span className="kpi-val highlight">{conflict.distance_km?.toFixed(2)} km</span>
+            </div>
+            <div className="conflict-kpi-item">
+              <span className="kpi-label">CLOSING SPEED</span>
+              <span className="kpi-val">{conflict.relative_speed_kmph?.toFixed(1) || 0} km/h</span>
+            </div>
+            <div className="conflict-kpi-item">
+              <span className="kpi-label">TIME-TO-CONFLICT (TTC)</span>
+              <span className="kpi-val alert-text">{ttcDisplay}</span>
+            </div>
+          </div>
+
+          {/* Affected Trains Grid */}
+          <div className="conflict-trains-section">
+            <h4 className="section-subheading">Involved Trains & Topology</h4>
+            <div className="trains-comparison-grid">
+              <div className="train-actor-card">
+                <div className="train-actor-tag">PRIMARY TRAIN</div>
+                <div className="train-actor-num">{conflict.train_number_1}</div>
+                <div className="train-actor-meta">Train ID: #{conflict.train_id_1}</div>
+              </div>
+
+              <div className="train-vs-badge">
+                <span>VS</span>
+              </div>
+
+              <div className="train-actor-card">
+                <div className="train-actor-tag">SECONDARY ACTOR</div>
+                <div className="train-actor-num">
+                  {conflict.train_number_2 ? conflict.train_number_2 : 'Signal Block'}
+                </div>
+                <div className="train-actor-meta">
+                  {conflict.train_id_2 ? `Train ID: #${conflict.train_id_2}` : 'Fixed Infrastructure'}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Section Location */}
+          <div className="conflict-location-card">
+            <span className="location-icon">📍</span>
+            <div>
+              <strong>Section / Zone:</strong> {conflict.section_name || `Section ID: ${conflict.section_id}`}
+            </div>
+          </div>
+
+          {/* Natural Language Explanation */}
+          <div className="explanation-box">
+            <div className="explanation-title">Kinematic Diagnostic & Root Cause</div>
+            <p className="explanation-text">{conflict.explanation}</p>
+          </div>
+
+          {/* Advisory Dispatcher Recommendation */}
+          <div className="recommendation-box">
+            <div className="recommendation-header">
+              <span className="rec-icon">⚡</span>
+              <strong>DISPATCHER DECISION SUPPORT ADVISORY:</strong>
+            </div>
+            <p className="recommendation-text">{conflict.recommendation}</p>
+            <div className="recommendation-disclaimer">
+              ℹ️ Recommendation generated by transparent rule-based safety engine. Dispatcher verification required.
+            </div>
+          </div>
+        </div>
+
+        <div className="modal-footer">
+          <button className="btn btn-secondary" onClick={onClose}>
+            Close Dossier
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+

@@ -1,0 +1,146 @@
+{
+  "model_name": "HistGradientBoosting",
+  "training_date": "2026-09-07T18:46:13.383331",
+  "dataset_size": 6500,
+  "train_samples": 5200,
+  "test_samples": 1300,
+  "features": [
+    "scheduled_duration",
+    "distance_remaining_km",
+    "current_speed_kmph",
+    "maximum_speed_kmph",
+    "current_delay_minutes",
+    "number_of_stops_remaining",
+    "station_dwell_time",
+    "number_of_trains_in_section",
+    "section_utilization",
+    "traffic_density",
+    "waiting_train_count",
+    "train_type",
+    "priority",
+    "time_of_day",
+    "day_type"
+  ],
+  "numerical_features": [
+    "scheduled_duration",
+    "distance_remaining_km",
+    "current_speed_kmph",
+    "maximum_speed_kmph",
+    "current_delay_minutes",
+    "number_of_stops_remaining",
+    "station_dwell_time",
+    "number_of_trains_in_section",
+    "section_utilization",
+    "traffic_density",
+    "waiting_train_count"
+  ],
+  "categorical_features": [
+    "train_type",
+    "priority",
+    "time_of_day",
+    "day_type"
+  ],
+  "metrics": {
+    "MAE": 0.851,
+    "RMSE": 1.118,
+    "R2": 0.9782
+  },
+  "all_model_comparison": {
+    "Linear Regression": {
+      "MAE": 1.589,
+      "RMSE": 2.073,
+      "R2": 0.925
+    },
+    "Random Forest": {
+      "MAE": 1.297,
+      "RMSE": 1.736,
+      "R2": 0.9474
+    },
+    "Gradient Boosting": {
+      "MAE": 0.868,
+      "RMSE": 1.133,
+      "R2": 0.9776
+    },
+    "HistGradientBoosting": {
+      "MAE": 0.851,
+      "RMSE": 1.118,
+      "R2": 0.9782
+    }
+  },
+  "feature_importances": [
+    {
+      "feature": "Current Delay Minutes",
+      "raw_name": "num__current_delay_minutes",
+      "importance": 0.3934,
+      "percentage": 32.78
+    },
+    {
+      "feature": "Waiting Train Count",
+      "raw_name": "num__waiting_train_count",
+      "importance": 0.2864,
+      "percentage": 23.86
+    },
+    {
+      "feature": "Current Speed Kmph",
+      "raw_name": "num__current_speed_kmph",
+      "importance": 0.1034,
+      "percentage": 8.62
+    },
+    {
+      "feature": "Section Utilization",
+      "raw_name": "num__section_utilization",
+      "importance": 0.0876,
+      "percentage": 7.3
+    },
+    {
+      "feature": "Station Dwell Time",
+      "raw_name": "num__station_dwell_time",
+      "importance": 0.061,
+      "percentage": 5.08
+    },
+    {
+      "feature": "Number Of Trains In Section",
+      "raw_name": "num__number_of_trains_in_section",
+      "importance": 0.0603,
+      "percentage": 5.02
+    },
+    {
+      "feature": "Distance Remaining Km",
+      "raw_name": "num__distance_remaining_km",
+      "importance": 0.0563,
+      "percentage": 4.69
+    },
+    {
+      "feature": "Priority High",
+      "raw_name": "cat__priority_HIGH",
+      "importance": 0.0506,
+      "percentage": 4.22
+    },
+    {
+      "feature": "Priority Low",
+      "raw_name": "cat__priority_LOW",
+      "importance": 0.047,
+      "percentage": 3.92
+    },
+    {
+      "feature": "Number Of Stops Remaining",
+      "raw_name": "num__number_of_stops_remaining",
+      "importance": 0.0245,
+      "percentage": 2.04
+    },
+    {
+      "feature": "Day Type Weekday",
+      "raw_name": "cat__day_type_WEEKDAY",
+      "importance": 0.0091,
+      "percentage": 0.76
+    },
+    {
+      "feature": "Time Of Day Afternoon",
+      "raw_name": "cat__time_of_day_AFTERNOON",
+      "importance": 0.0087,
+      "percentage": 0.72
+    }
+  ],
+  "version": "1.0.0",
+  "random_state": 42
+}

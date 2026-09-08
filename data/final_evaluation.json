@@ -1,0 +1,395 @@
+{
+  "project": {
+    "title": "Maximizing Section Throughput Using AI-Powered Precise Train Traffic Control",
+    "subtitle": "AI-Based Railway Traffic Simulation, Optimization and Decision Support System",
+    "version": "1.0.0",
+    "phase": "Phase 13: Final Integration Testing, Project Validation & Presentation-Ready Build",
+    "timestamp": "2026-09-08 07:24:47"
+  },
+  "performance_scaling": {
+    "10": {
+      "train_count": 10,
+      "sim_update_time_ms": 20.049,
+      "api_response_time_ms": 100.65,
+      "opt_time_ms": 3115.14,
+      "ml_inference_time_ms_per_train": 191.171,
+      "safety_validation_time_ms": 0.24,
+      "db_query_time_ms": 72.32,
+      "estimated_ws_latency_ms": 21.25
+    },
+    "25": {
+      "train_count": 25,
+      "sim_update_time_ms": 4.537,
+      "api_response_time_ms": 12.88,
+      "opt_time_ms": 3046.04,
+      "ml_inference_time_ms_per_train": 19.698,
+      "safety_validation_time_ms": 0.27,
+      "db_query_time_ms": 2.17,
+      "estimated_ws_latency_ms": 5.74
+    },
+    "50": {
+      "train_count": 50,
+      "sim_update_time_ms": 5.811,
+      "api_response_time_ms": 15.75,
+      "opt_time_ms": 3128.4,
+      "ml_inference_time_ms_per_train": 19.41,
+      "safety_validation_time_ms": 0.66,
+      "db_query_time_ms": 3.55,
+      "estimated_ws_latency_ms": 7.01
+    }
+  },
+  "scenario_benchmarks": {
+    "low_traffic": {
+      "name": "Low Traffic Density",
+      "traffic_density": "low",
+      "num_trains": 6,
+      "traditional": {
+        "throughput_tph": 6.0,
+        "avg_delay_min": 2.1,
+        "total_waiting_sec": 378.0,
+        "total_conflicts": 84.0,
+        "utilization_pct": 55.83
+      },
+      "ai": {
+        "throughput_tph": 6.0,
+        "avg_delay_min": 0.67,
+        "total_waiting_sec": 1080.0,
+        "total_conflicts": 0.0,
+        "utilization_pct": 55.0
+      },
+      "improvement": {
+        "throughput_gain_pct": 0.0,
+        "delay_reduction_pct": 68.1,
+        "waiting_time_reduction_pct": -185.71,
+        "conflict_reduction_pct": 100.0,
+        "overall_performance_score": 32.02
+      },
+      "safety": {
+        "violations": 0,
+        "unsafe_plans_applied": 0
+      }
+    },
+    "medium_traffic": {
+      "name": "Medium Traffic Density",
+      "traffic_density": "medium",
+      "num_trains": 12,
+      "traditional": {
+        "throughput_tph": 11.0,
+        "avg_delay_min": 14.29,
+        "total_waiting_sec": 7119.0,
+        "total_conflicts": 188.0,
+        "utilization_pct": 100.0
+      },
+      "ai": {
+        "throughput_tph": 12.0,
+        "avg_delay_min": 3.84,
+        "total_waiting_sec": 5760.0,
+        "total_conflicts": 0.0,
+        "utilization_pct": 90.0
+      },
+      "improvement": {
+        "throughput_gain_pct": 9.09,
+        "delay_reduction_pct": 73.13,
+        "waiting_time_reduction_pct": 19.09,
+        "conflict_reduction_pct": 100.0,
+        "overall_performance_score": 40.74
+      },
+      "safety": {
+        "violations": 0,
+        "unsafe_plans_applied": 0
+      }
+    },
+    "heavy_traffic": {
+      "name": "Heavy Traffic Density",
+      "traffic_density": "heavy",
+      "num_trains": 24,
+      "traditional": {
+        "throughput_tph": 12.0,
+        "avg_delay_min": 35.05,
+        "total_waiting_sec": 39708.0,
+        "total_conflicts": 240.0,
+        "utilization_pct": 100.0
+      },
+      "ai": {
+        "throughput_tph": 24.0,
+        "avg_delay_min": 6.88,
+        "total_waiting_sec": 0.0,
+        "total_conflicts": 0.0,
+        "utilization_pct": 54.17
+      },
+      "improvement": {
+        "throughput_gain_pct": 100.0,
+        "delay_reduction_pct": 80.37,
+        "waiting_time_reduction_pct": 100.0,
+        "conflict_reduction_pct": 100.0,
+        "overall_performance_score": 95.09
+      },
+      "safety": {
+        "violations": 0,
+        "unsafe_plans_applied": 0
+      }
+    },
+    "high_delay": {
+      "name": "High Delay Propagation",
+      "traffic_density": "medium-high",
+      "num_trains": 14,
+      "traditional": {
+        "throughput_tph": 12.0,
+        "avg_delay_min": 24.05,
+        "total_waiting_sec": 10899.0,
+        "total_conflicts": 224.0,
+        "utilization_pct": 100.0
+      },
+      "ai": {
+        "throughput_tph": 14.0,
+        "avg_delay_min": 10.61,
+        "total_waiting_sec": 7920.0,
+        "total_conflicts": 0.0,
+        "utilization_pct": 96.67
+      },
+      "improvement": {
+        "throughput_gain_pct": 16.67,
+        "delay_reduction_pct": 55.88,
+        "waiting_time_reduction_pct": 27.33,
+        "conflict_reduction_pct": 100.0,
+        "overall_performance_score": 41.1
+      },
+      "safety": {
+        "violations": 0,
+        "unsafe_plans_applied": 0
+      }
+    },
+    "bottleneck_corridor": {
+      "name": "Bottleneck Corridor Constrained",
+      "traffic_density": "high",
+      "num_trains": 16,
+      "traditional": {
+        "throughput_tph": 12.0,
+        "avg_delay_min": 23.66,
+        "total_waiting_sec": 15516.0,
+        "total_conflicts": 240.0,
+        "utilization_pct": 100.0
+      },
+      "ai": {
+        "throughput_tph": 16.0,
+        "avg_delay_min": 6.92,
+        "total_waiting_sec": 10800.0,
+        "total_conflicts": 0.0,
+        "utilization_pct": 100.0
+      },
+      "improvement": {
+        "throughput_gain_pct": 33.33,
+        "delay_reduction_pct": 70.75,
+        "waiting_time_reduction_pct": 30.39,
+        "conflict_reduction_pct": 100.0,
+        "overall_performance_score": 52.1
+      },
+      "safety": {
+        "violations": 0,
+        "unsafe_plans_applied": 0
+      }
+    },
+    "mixed_priority": {
+      "name": "Mixed Priority Heterogeneous",
+      "traffic_density": "medium",
+      "num_trains": 15,
+      "traditional": {
+        "throughput_tph": 11.0,
+        "avg_delay_min": 19.13,
+        "total_waiting_sec": 13374.0,
+        "total_conflicts": 240.0,
+        "utilization_pct": 100.0
+      },
+      "ai": {
+        "throughput_tph": 15.0,
+        "avg_delay_min": 3.74,
+        "total_waiting_sec": 9480.0,
+        "total_conflicts": 0.0,
+        "utilization_pct": 100.0
+      },
+      "improvement": {
+        "throughput_gain_pct": 36.36,
+        "delay_reduction_pct": 80.45,
+        "waiting_time_reduction_pct": 29.12,
+        "conflict_reduction_pct": 100.0,
+        "overall_performance_score": 55.48
+      },
+      "safety": {
+        "violations": 0,
+        "unsafe_plans_applied": 0
+      }
+    }
+  },
+  "summary_metrics": {
+    "scenarios_evaluated": 6,
+    "ai_superior_scenarios": "6 out of 6",
+    "average_throughput_gain_pct": 32.57,
+    "max_throughput_gain_pct": 100.0,
+    "average_delay_reduction_pct": 71.45,
+    "best_scenario": {
+      "id": "heavy_traffic",
+      "name": "Heavy Traffic Density",
+      "score": 95.09
+    },
+    "worst_scenario": {
+      "id": "low_traffic",
+      "name": "Low Traffic Density",
+      "score": 32.02
+    }
+  },
+  "safety_statistics": {
+    "total_ai_recommendations": 65,
+    "safety_approved": 27,
+    "safety_rejected": 16,
+    "controller_approved": 18,
+    "controller_rejected": 1,
+    "unsafe_actions_applied": 0
+  },
+  "ml_model": {
+    "model_name": "HistGradientBoosting",
+    "training_date": "2026-09-07T18:46:13.383331",
+    "dataset_size": 6500,
+    "train_samples": 5200,
+    "test_samples": 1300,
+    "features": [
+      "scheduled_duration",
+      "distance_remaining_km",
+      "current_speed_kmph",
+      "maximum_speed_kmph",
+      "current_delay_minutes",
+      "number_of_stops_remaining",
+      "station_dwell_time",
+      "number_of_trains_in_section",
+      "section_utilization",
+      "traffic_density",
+      "waiting_train_count",
+      "train_type",
+      "priority",
+      "time_of_day",
+      "day_type"
+    ],
+    "numerical_features": [
+      "scheduled_duration",
+      "distance_remaining_km",
+      "current_speed_kmph",
+      "maximum_speed_kmph",
+      "current_delay_minutes",
+      "number_of_stops_remaining",
+      "station_dwell_time",
+      "number_of_trains_in_section",
+      "section_utilization",
+      "traffic_density",
+      "waiting_train_count"
+    ],
+    "categorical_features": [
+      "train_type",
+      "priority",
+      "time_of_day",
+      "day_type"
+    ],
+    "metrics": {
+      "MAE": 0.851,
+      "RMSE": 1.118,
+      "R2": 0.9782
+    },
+    "all_model_comparison": {
+      "Linear Regression": {
+        "MAE": 1.589,
+        "RMSE": 2.073,
+        "R2": 0.925
+      },
+      "Random Forest": {
+        "MAE": 1.297,
+        "RMSE": 1.736,
+        "R2": 0.9474
+      },
+      "Gradient Boosting": {
+        "MAE": 0.868,
+        "RMSE": 1.133,
+        "R2": 0.9776
+      },
+      "HistGradientBoosting": {
+        "MAE": 0.851,
+        "RMSE": 1.118,
+        "R2": 0.9782
+      }
+    },
+    "feature_importances": [
+      {
+        "feature": "Current Delay Minutes",
+        "raw_name": "num__current_delay_minutes",
+        "importance": 0.3934,
+        "percentage": 32.78
+      },
+      {
+        "feature": "Waiting Train Count",
+        "raw_name": "num__waiting_train_count",
+        "importance": 0.2864,
+        "percentage": 23.86
+      },
+      {
+        "feature": "Current Speed Kmph",
+        "raw_name": "num__current_speed_kmph",
+        "importance": 0.1034,
+        "percentage": 8.62
+      },
+      {
+        "feature": "Section Utilization",
+        "raw_name": "num__section_utilization",
+        "importance": 0.0876,
+        "percentage": 7.3
+      },
+      {
+        "feature": "Station Dwell Time",
+        "raw_name": "num__station_dwell_time",
+        "importance": 0.061,
+        "percentage": 5.08
+      },
+      {
+        "feature": "Number Of Trains In Section",
+        "raw_name": "num__number_of_trains_in_section",
+        "importance": 0.0603,
+        "percentage": 5.02
+      },
+      {
+        "feature": "Distance Remaining Km",
+        "raw_name": "num__distance_remaining_km",
+        "importance": 0.0563,
+        "percentage": 4.69
+      },
+      {
+        "feature": "Priority High",
+        "raw_name": "cat__priority_HIGH",
+        "importance": 0.0506,
+        "percentage": 4.22
+      },
+      {
+        "feature": "Priority Low",
+        "raw_name": "cat__priority_LOW",
+        "importance": 0.047,
+        "percentage": 3.92
+      },
+      {
+        "feature": "Number Of Stops Remaining",
+        "raw_name": "num__number_of_stops_remaining",
+        "importance": 0.0245,
+        "percentage": 2.04
+      },
+      {
+        "feature": "Day Type Weekday",
+        "raw_name": "cat__day_type_WEEKDAY",
+        "importance": 0.0091,
+        "percentage": 0.76
+      },
+      {
+        "feature": "Time Of Day Afternoon",
+        "raw_name": "cat__time_of_day_AFTERNOON",
+        "importance": 0.0087,
+        "percentage": 0.72
+      }
+    ],
+    "version": "1.0.0",
+    "random_state": 42
+  },
+  "verification_status": "PASS (100% Invariants Verified)"
+}

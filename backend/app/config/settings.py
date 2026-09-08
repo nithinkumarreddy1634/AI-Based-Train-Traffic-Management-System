@@ -1,0 +1,57 @@
+import os
+from typing import List, Union
+from pydantic_settings import BaseSettings, SettingsConfigDict
+from pydantic import field_validator
+
+
+class Settings(BaseSettings):
+    """Application configuration settings loaded from environment or defaults."""
+
+    # Project Information
+    PROJECT_NAME: str = "Maximizing Section Throughput Using AI-Powered Precise Train Traffic Control"
+    PROJECT_PHASE: str = "Phase 13: Final Integration Testing, Project Validation & Presentation-Ready Build"
+    API_VERSION: str = "1.0.0"
+    API_DEBUG: bool = True
+    ENVIRONMENT: str = "development"
+    LOG_LEVEL: str = "INFO"
+
+    # Server Binding
+    API_HOST: str = "127.0.0.1"
+    API_PORT: int = 8000
+
+    # Simulation & AI Engine
+    SIMULATION_SPEED: float = 1.0
+    ML_MODEL_PATH: str = "ml/saved_models/delay_prediction_model.pkl"
+
+    # Database
+    DATABASE_URL: str = "sqlite:///./train_control.db"
+
+    # Frontend Integration
+    FRONTEND_URL: str = "http://localhost:5173"
+    ALLOWED_ORIGINS: Union[List[str], str] = [
+        "http://localhost:5173",
+        "http://127.0.0.1:5173",
+        "http://localhost:3000",
+        "http://127.0.0.1:3000",
+    ]
+
+
+    @field_validator("ALLOWED_ORIGINS", mode="before")
+    @classmethod
+    def assemble_cors_origins(cls, v: Union[str, List[str]]) -> List[str]:
+        if isinstance(v, str) and not v.startswith("["):
+            return [i.strip() for i in v.split(",") if i.strip()]
+        elif isinstance(v, (list, str)):
+            return v
+        raise ValueError(v)
+
+    model_config = SettingsConfigDict(
+        env_file=".env",
+        env_file_encoding="utf-8",
+        case_sensitive=True,
+        extra="ignore",
+    )
+
+
+settings = Settings()
+
