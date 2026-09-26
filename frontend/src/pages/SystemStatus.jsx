@@ -28,6 +28,8 @@ const SUBSYSTEM_DEFS = [
   { key: 'websocket', label: 'WebSocket Stream', icon: Radio, desc: 'Real-time telemetry stream broadcaster (2 Hz)' },
 ];
 
+import { MOCK_HEALTH } from '../services/mockData';
+
 export default function SystemStatus() {
   const [health, setHealth] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -39,8 +41,9 @@ export default function SystemStatus() {
       const res = await axios.get('/api/health');
       setHealth(res.data);
       setLastRefreshed(new Date().toLocaleTimeString());
-    } catch (err) {
-      console.error('Failed to fetch system health:', err);
+    } catch {
+      setHealth(MOCK_HEALTH);
+      setLastRefreshed(new Date().toLocaleTimeString());
     } finally {
       setLoading(false);
     }

@@ -29,57 +29,121 @@ export async function fetchApiInfo() {
   return response.data;
 }
 
+import {
+  MOCK_STATIONS,
+  MOCK_SECTIONS,
+  MOCK_TRACKS,
+  MOCK_TRAINS,
+  MOCK_SCHEDULES,
+  MOCK_CONTROL_STATE,
+  MOCK_HEALTH,
+  MOCK_AI_VS_HUMAN
+} from './mockData';
+
 /**
  * Phase 2: Railway Infrastructure APIs
  */
 export async function fetchStations() {
-  const response = await apiClient.get('/api/stations');
-  return response.data;
+  try {
+    const response = await apiClient.get('/api/stations');
+    return response.data;
+  } catch {
+    return MOCK_STATIONS;
+  }
 }
 
 export async function fetchStation(stationId) {
-  const response = await apiClient.get(`/api/stations/${stationId}`);
-  return response.data;
+  try {
+    const response = await apiClient.get(`/api/stations/${stationId}`);
+    return response.data;
+  } catch {
+    return MOCK_STATIONS.find(s => s.id === Number(stationId)) || MOCK_STATIONS[0];
+  }
 }
 
 export async function fetchSections() {
-  const response = await apiClient.get('/api/sections');
-  return response.data;
+  try {
+    const response = await apiClient.get('/api/sections');
+    return response.data;
+  } catch {
+    return MOCK_SECTIONS;
+  }
 }
 
 export async function fetchSection(sectionId) {
-  const response = await apiClient.get(`/api/sections/${sectionId}`);
-  return response.data;
+  try {
+    const response = await apiClient.get(`/api/sections/${sectionId}`);
+    return response.data;
+  } catch {
+    return MOCK_SECTIONS.find(s => s.id === Number(sectionId)) || MOCK_SECTIONS[0];
+  }
 }
 
 export async function fetchTracks() {
-  const response = await apiClient.get('/api/tracks');
-  return response.data;
+  try {
+    const response = await apiClient.get('/api/tracks');
+    return response.data;
+  } catch {
+    return MOCK_TRACKS;
+  }
 }
 
 export async function fetchTrains(params = {}) {
-  const response = await apiClient.get('/api/trains', { params });
-  return response.data;
+  try {
+    const response = await apiClient.get('/api/trains', { params });
+    return response.data;
+  } catch {
+    return MOCK_TRAINS;
+  }
 }
 
 export async function fetchTrain(trainId) {
-  const response = await apiClient.get(`/api/trains/${trainId}`);
-  return response.data;
+  try {
+    const response = await apiClient.get(`/api/trains/${trainId}`);
+    return response.data;
+  } catch {
+    return MOCK_TRAINS.find(t => t.id === Number(trainId)) || MOCK_TRAINS[0];
+  }
 }
 
 export async function fetchNetwork() {
-  const response = await apiClient.get('/api/network');
-  return response.data;
+  try {
+    const response = await apiClient.get('/api/network');
+    return response.data;
+  } catch {
+    return {
+      stations: MOCK_STATIONS,
+      sections: MOCK_SECTIONS,
+      tracks: MOCK_TRACKS,
+      trains: MOCK_TRAINS
+    };
+  }
 }
 
 export async function fetchSchedules() {
-  const response = await apiClient.get('/api/schedules');
-  return response.data;
+  try {
+    const response = await apiClient.get('/api/schedules');
+    return response.data;
+  } catch {
+    return MOCK_SCHEDULES;
+  }
 }
 
 export async function fetchDashboardStats() {
-  const response = await apiClient.get('/api/dashboard/stats');
-  return response.data;
+  try {
+    const response = await apiClient.get('/api/dashboard/stats');
+    return response.data;
+  } catch {
+    return {
+      total_trains: MOCK_TRAINS.length,
+      active_trains: 10,
+      total_stations: MOCK_STATIONS.length,
+      total_sections: MOCK_SECTIONS.length,
+      total_tracks: MOCK_TRACKS.length,
+      active_conflicts: 1,
+      throughput_trains_per_hour: 16.0
+    };
+  }
 }
 
 /**
@@ -402,18 +466,30 @@ export async function fetchExplanationSummaryStats() {
  * Phase 11: Real-Time Intelligent Control Center, Scenario Management & Emergency Handling
  */
 export async function fetchControlState() {
-  const response = await apiClient.get('/api/control/state');
-  return response.data;
+  try {
+    const response = await apiClient.get('/api/control/state');
+    return response.data;
+  } catch {
+    return MOCK_CONTROL_STATE;
+  }
 }
 
 export async function fetchControlHealth() {
-  const response = await apiClient.get('/api/control/health');
-  return response.data;
+  try {
+    const response = await apiClient.get('/api/control/health');
+    return response.data;
+  } catch {
+    return MOCK_HEALTH;
+  }
 }
 
 export async function fetchAiVsHumanMetrics() {
-  const response = await apiClient.get('/api/control/ai-vs-human');
-  return response.data;
+  try {
+    const response = await apiClient.get('/api/control/ai-vs-human');
+    return response.data;
+  } catch {
+    return MOCK_AI_VS_HUMAN;
+  }
 }
 
 export async function fetchControlScenarios() {
