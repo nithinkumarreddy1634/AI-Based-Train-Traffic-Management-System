@@ -23,8 +23,9 @@ class Settings(BaseSettings):
     SIMULATION_SPEED: float = 1.0
     ML_MODEL_PATH: str = "ml/saved_models/delay_prediction_model.pkl"
 
-    # Google Gemini AI Integration
+    # Google Gemini & OpenRouter AI Integration
     GEMINI_API_KEY: Optional[str] = None
+    OPENROUTER_API_KEY: Optional[str] = None
 
     # Database
     DATABASE_URL: str = "sqlite:///./train_control.db"
