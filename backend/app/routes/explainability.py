@@ -331,3 +331,26 @@ def get_decision_summary_stats(db: Session = Depends(get_db)):
         "controller_approval_rate_pct": round((approved + applied) / max(1, total) * 100.0, 1),
         "safety_compliance_rate_pct": round((total - safety_rejected) / max(1, total) * 100.0, 1)
     }
+
+
+@router.post("/gemini-advisory")
+async def get_gemini_advisory(payload: Dict[str, Any] = {}):
+    """
+    Generates real-time Chief Dispatcher tactical advice powered by Google Gemini 3.8 Flash.
+    """
+    try:
+        from explainability.gemini_assistant import gemini_assistant
+    except ImportError:
+        from backend.explainability.gemini_assistant import gemini_assistant
+
+    scenario = payload.get("scenario", "Bottleneck Corridor")
+    trains_count = payload.get("trains_count", 10)
+    conflicts = payload.get("conflicts", [])
+    throughput_gain = payload.get("throughput_gain_pct", 32.6)
+
+    return await gemini_assistant.generate_dispatch_advisory(
+        scenario_name=scenario,
+        active_trains_count=trains_count,
+        conflicts=conflicts,
+        throughput_gain_pct=throughput_gain,
+    )

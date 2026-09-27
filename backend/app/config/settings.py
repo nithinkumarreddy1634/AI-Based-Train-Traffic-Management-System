@@ -1,5 +1,5 @@
 import os
-from typing import List, Union
+from typing import List, Union, Optional
 from pydantic_settings import BaseSettings, SettingsConfigDict
 from pydantic import field_validator
 
@@ -23,6 +23,9 @@ class Settings(BaseSettings):
     SIMULATION_SPEED: float = 1.0
     ML_MODEL_PATH: str = "ml/saved_models/delay_prediction_model.pkl"
 
+    # Google Gemini AI Integration
+    GEMINI_API_KEY: Optional[str] = None
+
     # Database
     DATABASE_URL: str = "sqlite:///./train_control.db"
 
@@ -33,6 +36,10 @@ class Settings(BaseSettings):
         "http://127.0.0.1:5173",
         "http://localhost:3000",
         "http://127.0.0.1:3000",
+        "https://traintrafficsystem.netlify.app",
+        "https://*.netlify.app",
+        "https://*.vercel.app",
+        "*",
     ]
 
 

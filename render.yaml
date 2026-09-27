@@ -1,0 +1,22 @@
+# Render Cloud Blueprint for AI-Powered Train Traffic Control System
+# Deploys the FastAPI asynchronous backend, kinematic simulation, and ML engine
+
+services:
+  - type: web
+    name: train-traffic-control-api
+    runtime: python
+    buildCommand: "pip install -r requirements.txt && python seed_database.py"
+    startCommand: "uvicorn backend.app.main:app --host 0.0.0.0 --port $PORT"
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
+      - key: ENVIRONMENT
+        value: production
+      - key: API_DEBUG
+        value: "false"
+      - key: LOG_LEVEL
+        value: INFO
+      - key: FRONTEND_URL
+        value: "*"
+      - key: GEMINI_API_KEY
+        sync: false

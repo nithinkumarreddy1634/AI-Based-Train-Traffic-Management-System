@@ -22,14 +22,16 @@ import {
   Info,
   ChevronDown,
   FileText,
-  Filter
+  Filter,
+  Sparkles
 } from 'lucide-react';
 import {
   fetchLatestExplanation,
   fetchRecommendationExplanation,
   fetchExplanationHistory,
   submitControllerFeedback,
-  fetchExplanationSummaryStats
+  fetchExplanationSummaryStats,
+  fetchGeminiAdvisory
 } from '../services/api';
 
 const REJECTION_REASONS = [
@@ -51,12 +53,23 @@ export default function ExplainableAI({ simulation }) {
   const [selectedRejectionReason, setSelectedRejectionReason] = useState(REJECTION_REASONS[0]);
   const [customRejectionText, setCustomRejectionText] = useState('');
   const [selectedCandidateIdx, setSelectedCandidateIdx] = useState(0);
+  const [geminiAdvisory, setGeminiAdvisory] = useState(null);
 
   useEffect(() => {
     loadLatestExplanation();
     loadStats();
     loadHistory();
+    loadGeminiAdvisory();
   }, []);
+
+  const loadGeminiAdvisory = async () => {
+    try {
+      const adv = await fetchGeminiAdvisory('Bottleneck Corridor', 10, [], 32.6);
+      setGeminiAdvisory(adv);
+    } catch {
+      // Handled in api client
+    }
+  };
 
   const loadLatestExplanation = async () => {
     setIsLoading(true);
@@ -230,6 +243,35 @@ export default function ExplainableAI({ simulation }) {
       {/* SUBTAB 1: REAL-TIME DECISION PANEL */}
       {activeSubTab === 'decision' && (
         <div className="xai-tab-content">
+          {/* Google Gemini 3.8 Flash AI Copilot Advisory */}
+          <div className="xai-gemini-card" style={{
+            background: 'linear-gradient(135deg, rgba(30, 58, 138, 0.4) 0%, rgba(15, 23, 42, 0.85) 100%)',
+            border: '1px solid rgba(56, 189, 248, 0.35)',
+            borderRadius: '12px',
+            padding: '1.1rem 1.4rem',
+            marginBottom: '1.25rem',
+            boxShadow: '0 8px 24px -4px rgba(2, 132, 199, 0.25)',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '0.65rem'
+          }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '0.5rem' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
+                <Sparkles size={18} style={{ color: '#38bdf8' }} />
+                <span style={{ fontSize: '0.95rem', fontWeight: 700, color: '#f8fafc', letterSpacing: '0.02em' }}>
+                  Google Gemini 3.8 Flash Dispatch Copilot
+                </span>
+                <span style={{ fontSize: '0.65rem', fontWeight: 700, padding: '0.15rem 0.5rem', borderRadius: '9999px', background: 'rgba(56, 189, 248, 0.2)', color: '#38bdf8', border: '1px solid rgba(56, 189, 248, 0.35)' }}>
+                  Active Intelligence
+                </span>
+              </div>
+              <span style={{ fontSize: '0.72rem', color: '#94a3b8' }}>Model: Google Gemini 3.8 Flash</span>
+            </div>
+            <div style={{ fontSize: '0.85rem', color: '#e2e8f0', lineHeight: 1.6, whiteSpace: 'pre-line' }}>
+              {geminiAdvisory?.advisory || "Analyzing corridor headway parameters and train priority weights..."}
+            </div>
+          </div>
+
           <div className="xai-split-grid">
             {/* Lead AI Decision Card */}
             <div className="xai-decision-panel">
