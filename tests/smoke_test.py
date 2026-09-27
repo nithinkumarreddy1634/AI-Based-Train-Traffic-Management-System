@@ -1,5 +1,5 @@
 """
-System Smoke Test for "Maximizing Section Throughput Using AI-Powered Precise Train Traffic Control"
+System Smoke Test for "AI-Based Train Traffic Management System"
 
 Verifies all 7 core subsystems:
 1. Backend

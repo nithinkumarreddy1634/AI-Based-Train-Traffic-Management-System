@@ -28,7 +28,7 @@ export default function Header({ backendStatus, latency, error, onRefresh }) {
             </span>
           </div>
           <h1 className="header-title">
-            Maximizing Section Throughput Using AI-Powered Precise Train Traffic Control
+            AI-Based Train Traffic Management System
           </h1>
           <p className="header-subtitle">
             Autonomous Kinematic Simulation, Multi-Objective Optimization &amp; Safety Gatekeeper

@@ -8,7 +8,7 @@ class Settings(BaseSettings):
     """Application configuration settings loaded from environment or defaults."""
 
     # Project Information
-    PROJECT_NAME: str = "Maximizing Section Throughput Using AI-Powered Precise Train Traffic Control"
+    PROJECT_NAME: str = "AI-Based Train Traffic Management System"
     PROJECT_PHASE: str = "Phase 13: Final Integration Testing, Project Validation & Presentation-Ready Build"
     API_VERSION: str = "1.0.0"
     API_DEBUG: bool = True

@@ -506,7 +506,7 @@ The analytics engine compares AI dispatching with traditional scheduling under i
 
 ```bash
 git clone <repository-url>
-cd "Maximizing Section Throughput Using AI-Powered Precise Train Traffic Control"
+cd "AI-Based-Train-Traffic-Management-System"
 ```
 
 ---
@@ -820,7 +820,7 @@ The internal safety-validation engine is an algorithmic software safeguard and *
 
 # 👨‍💻 Project
 
-### Maximizing Section Throughput Using AI-Powered Precise Train Traffic Control
+### AI-Based Train Traffic Management System
 
 **Phase 12 — Production Readiness, Deployment, Documentation & Final Integration**
 

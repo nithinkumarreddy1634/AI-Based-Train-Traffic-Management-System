@@ -6,7 +6,7 @@ class RootResponse(BaseModel):
     """Schema for root API endpoint response."""
     status: str = Field(..., json_schema_extra={"example": "online"})
     message: str = Field(..., json_schema_extra={"example": "AI-Powered Train Traffic Control API is running"})
-    project: str = Field(..., json_schema_extra={"example": "Maximizing Section Throughput Using AI-Powered Precise Train Traffic Control"})
+    project: str = Field(..., json_schema_extra={"example": "AI-Based Train Traffic Management System"})
     version: str = Field(..., json_schema_extra={"example": "1.0.0"})
     phase: str = Field(..., json_schema_extra={"example": "Phase 1: Project Foundation & System Setup"})
     docs_url: str = Field(..., json_schema_extra={"example": "/docs"})
