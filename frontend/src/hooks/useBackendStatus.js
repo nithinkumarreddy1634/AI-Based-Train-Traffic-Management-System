@@ -23,9 +23,10 @@ export function useBackendStatus(pollIntervalMs = 5000) {
       setLatency(elapsed);
       setStatus('disconnected');
       setHealthData(null);
+      const isColdStart = err.code === 'ECONNABORTED' || err.message?.toLowerCase().includes('timeout') || err.message === 'Network Error';
       setError(
         err.response?.data?.message ||
-        err.message ||
+        (isColdStart ? 'Waking up cloud backend (cold start)... Retrying' : err.message) ||
         `Unable to reach backend at ${API_BASE_URL}`
       );
       setLastChecked(new Date());

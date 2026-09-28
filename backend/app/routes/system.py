@@ -26,6 +26,7 @@ async def get_root() -> RootResponse:
     summary="Health Check Probe",
     description="Probes database connectivity, server uptime, and operational readiness.",
 )
+@router.get("/health/", response_model=HealthResponse, include_in_schema=False)
 async def get_health() -> HealthResponse:
     return HealthResponse(**system_service.get_health_status())
 
