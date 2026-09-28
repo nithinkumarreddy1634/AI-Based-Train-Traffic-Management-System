@@ -20,6 +20,8 @@ import {
   TrendingUp,
   Activity,
   Zap,
+  Globe,
+  ExternalLink,
 } from 'lucide-react';
 import {
   fetchRootStatus,
@@ -271,6 +273,26 @@ export default function Dashboard({ backendStatus, healthData, error, latency, s
           </div>
 
           <div className="panel-body">
+            <div className="diagnostic-row">
+              <div className="diag-label">
+                <Globe size={15} />
+                <span>Live Vercel Application</span>
+              </div>
+              <div className="diag-value">
+                <a
+                  href="https://ai-based-train-traffic-management-s.vercel.app"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-cyan font-mono"
+                  style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem', textDecoration: 'none', fontWeight: 600 }}
+                  title="Open Live Vercel Deployment"
+                >
+                  <span>ai-based-train-traffic-management-s.vercel.app</span>
+                  <ExternalLink size={12} />
+                </a>
+              </div>
+            </div>
+
             <div className="diagnostic-row">
               <div className="diag-label">
                 <Server size={15} />

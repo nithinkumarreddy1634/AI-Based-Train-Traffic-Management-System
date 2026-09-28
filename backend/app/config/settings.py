@@ -31,12 +31,13 @@ class Settings(BaseSettings):
     DATABASE_URL: str = "sqlite:///./train_control.db"
 
     # Frontend Integration
-    FRONTEND_URL: str = "http://localhost:5173"
+    FRONTEND_URL: str = "https://ai-based-train-traffic-management-s.vercel.app"
     ALLOWED_ORIGINS: Union[List[str], str] = [
         "http://localhost:5173",
         "http://127.0.0.1:5173",
         "http://localhost:3000",
         "http://127.0.0.1:3000",
+        "https://ai-based-train-traffic-management-s.vercel.app",
         "https://traintrafficsystem.netlify.app",
         "https://*.netlify.app",
         "https://*.vercel.app",

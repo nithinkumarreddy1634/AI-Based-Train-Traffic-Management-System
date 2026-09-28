@@ -164,6 +164,35 @@
 .text-cyan { color: #06b6d4; }
 .text-emerald { color: #10b981; }
 
+.header-vercel-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.42rem;
+  padding: 0.42rem 0.8rem;
+  background: rgba(15, 23, 42, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  color: #f8fafc;
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.header-vercel-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.45);
+  color: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+}
+
+.vercel-logo-svg {
+  display: inline-block;
+  fill: currentColor;
+  flex-shrink: 0;
+}
+
 .header-gh-btn {
   display: flex;
   align-items: center;
@@ -210,10 +239,10 @@
 }
 
 .status-connected {
-  background: rgba(16, 185, 129, 0.15);
+  background: rgba(16, 185, 129, 0.22);
   color: #34d399;
-  border: 1px solid rgba(52, 211, 153, 0.35);
-  box-shadow: 0 0 10px rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(52, 211, 153, 0.45);
+  box-shadow: 0 0 12px rgba(16, 185, 129, 0.22);
 }
 
 .status-disconnected {

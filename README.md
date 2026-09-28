@@ -5,12 +5,20 @@
   <img src="https://img.shields.io/badge/FastAPI-0.110+-009688?style=for-the-badge&logo=fastapi&logoColor=white" alt="FastAPI"/>
   <img src="https://img.shields.io/badge/React-18-61DAFB?style=for-the-badge&logo=react&logoColor=black" alt="React"/>
   <img src="https://img.shields.io/badge/Vite-5.4-646CFF?style=for-the-badge&logo=vite&logoColor=white" alt="Vite"/>
+  <a href="https://ai-based-train-traffic-management-s.vercel.app" target="_blank">
+    <img src="https://img.shields.io/badge/Vercel-Live%20Demo-000000?style=for-the-badge&logo=vercel&logoColor=white" alt="Vercel App"/>
+  </a>
   <img src="https://img.shields.io/badge/Tests-120%2F120%20Passing-2EA44F?style=for-the-badge&logo=pytest&logoColor=white" alt="Tests"/>
   <img src="https://img.shields.io/badge/Status-Phase%2012%20Production%20Ready-success?style=for-the-badge" alt="Status"/>
 </p>
 
 <p align="center">
   <strong>Real-Time Simulation • ML Delay Prediction • AI Dispatch Optimization • Formal Safety Validation • Explainable AI</strong>
+</p>
+
+<p align="center">
+  🌐 <strong>Live Vercel Application:</strong> <a href="https://ai-based-train-traffic-management-s.vercel.app" target="_blank"><strong>https://ai-based-train-traffic-management-s.vercel.app</strong></a><br/>
+  ⚙️ <strong>Live Cloud Backend (Render):</strong> <a href="https://train-traffic-control-api.onrender.com" target="_blank">https://train-traffic-control-api.onrender.com</a> &nbsp;|&nbsp; 📖 <a href="https://train-traffic-control-api.onrender.com/docs" target="_blank">Swagger Docs</a>
 </p>
 
 <p align="center">
@@ -571,6 +579,21 @@ cd ..
 ---
 
 # ▶️ Run the Application
+
+## 🌐 Live Cloud Deployment (Instant Access)
+
+The application is deployed live and can be accessed directly without any local installation:
+
+| Service | Host | Live Production URL | Purpose |
+|---|---|---|---|
+| **Frontend Web App** | **Vercel** | [**https://ai-based-train-traffic-management-s.vercel.app**](https://ai-based-train-traffic-management-s.vercel.app) | Real-time traffic control dashboard, synoptic railway map, simulation controls |
+| **FastAPI REST & WS Engine** | **Render** | [**https://train-traffic-control-api.onrender.com**](https://train-traffic-control-api.onrender.com) | Kinematic simulation, ML delay inference, AI dispatch optimization |
+| **Interactive API Docs** | **Render** | [**https://train-traffic-control-api.onrender.com/docs**](https://train-traffic-control-api.onrender.com/docs) | Swagger UI for exploring all 20+ REST endpoints |
+| **Health & Telemetry API** | **Render** | [**https://train-traffic-control-api.onrender.com/health**](https://train-traffic-control-api.onrender.com/health) | System health probe & component status verification |
+
+---
+
+## 💻 Local Development Setup
 
 ## Terminal 1 — FastAPI Backend
 

@@ -60,6 +60,20 @@ export default function Header({ backendStatus, latency, error, onRefresh }) {
         />
 
         <a
+          href="https://ai-based-train-traffic-management-s.vercel.app"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="header-vercel-btn"
+          title="Open Live Vercel App"
+        >
+          <svg className="vercel-logo-svg" viewBox="0 0 1155 1000" width="13" height="11" fill="currentColor">
+            <path d="m577.3 0 577.4 1000H0z" />
+          </svg>
+          <span className="vercel-label">Vercel Live</span>
+          <ExternalLink size={11} className="gh-ext" />
+        </a>
+
+        <a
           href="https://github.com/nithinkumarreddy1634/AI-Based-Train-Traffic-Management-System"
           target="_blank"
           rel="noopener noreferrer"
