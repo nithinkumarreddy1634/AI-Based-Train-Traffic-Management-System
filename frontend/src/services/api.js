@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || (import.meta.env.PROD ? 'https://train-traffic-control-api.onrender.com' : 'http://127.0.0.1:8000');
-const WS_BASE_URL = API_BASE_URL.replace(/^http/, 'ws');
+export const API_BASE_URL = import.meta.env.VITE_API_URL || (import.meta.env.PROD ? 'https://train-traffic-control-api.onrender.com' : 'http://127.0.0.1:8000');
+export const WS_BASE_URL = API_BASE_URL.replace(/^http/, 'ws');
 
 export const apiClient = axios.create({
   baseURL: API_BASE_URL,
@@ -593,7 +593,6 @@ export async function fetchDemonstrationStatus() {
   return response.data;
 }
 
-export { API_BASE_URL, WS_BASE_URL };
 
 
 

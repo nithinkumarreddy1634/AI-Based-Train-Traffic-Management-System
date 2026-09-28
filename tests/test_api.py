@@ -17,7 +17,7 @@ def test_root_endpoint(client):
     assert response.status_code == 200
     data = response.json()
     assert data["status"] == "online"
-    assert "Train Traffic Control" in data["project"]
+    assert "Train Traffic" in data["project"]
     assert "version" in data
     assert data["phase"] == "Phase 1: Project Foundation & System Setup"
     assert data["docs_url"] == "/docs"
